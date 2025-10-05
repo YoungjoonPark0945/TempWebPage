@@ -80,9 +80,21 @@ and feature enhancement filters to determine which approaches lead to the most a
 <!-- Approach -->
 <h3>Approach</h3>
 <p>
-  Describe very clearly and systematically your approach to solve the problem. 
-  Tell us exactly what existing implementations you used to build your system. Tell us what obstacles you faced and how you addressed them. 
-  Justify any design choices or judgment calls you made in your approach.
+  The team will build on an existing plant disease detection model that uses a Convolutional Neural Network (CNN) 
+  for image classification. Instead of creating a new model, the focus will be on improving how the images are 
+  preprocessed before training.
+</p>
+<p>
+  Two training pipelines will be used: one with raw images as the baseline, and another with images processed
+   using computer vision techniques such as color space transformation, Gaussian blur, Sobel and Laplacian 
+   edge detection, and histogram equalization. The same CNN architecture will be used for both to ensure a fair
+    comparison.
+</p>
+<p>
+  The goal is to find out which preprocessing steps improve the model's accuracy and reliability. 
+  The main challenge will be adjusting these methods to enhance disease features without distorting the image.
+  Visualization tools like Grad-CAM will be used to confirm whether preprocessing helps the model focus on 
+  the correct diseased areas.
 </p>
 <br><br>
 
