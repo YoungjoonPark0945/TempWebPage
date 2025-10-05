@@ -101,45 +101,95 @@ and feature enhancement filters to determine which approaches lead to the most a
 <!-- Plans -->
 <h3>Plans for Experimantation</h3>
 <p>
-The team will begin the project by collecting or selecting an existing dataset that contains various plant leaf images, 
-including both healthy and diseased samples. The main focus will not be on building a new dataset but on improving how images 
-are prepared before being used for training and testing. The experiments will compare the performance of a standard deep learning model when trained 
-on raw images versus images processed with different computer vision techniques.
+  The team will begin the project by using two publicly available datasets found through Kaggle: PlantVillage 
+  and New Plant Diseases Dataset. Both datasets contain labeled RGB images of healthy and diseased crop leaves
+  across multiple plant species. Each dataset has around 87,000 images categorized into 38 different classes, 
+  divided into 80% training and 20% validation sets. Both datasets were created through offline augmentation 
+  from the original PlantVillage dataset, ensuring balanced class representation and good variety in lighting 
+  and leaf position. A separate set of 33 test images is also provided for final evaluation.
 </p>
-
-
+<p>
+  These datasets are well-suited for plant disease classification tasks and will serve as the foundation for 
+  testing how different preprocessing techniques affect deep learning performance. The datasets already provide
+  sufficient diversity in plant type, health condition, and image quality.
+</p>
+<p>
+  The team will build on an existing implementation from Kaggle titled “Plant Disease Classification - ResNet (99.2%)” 
+  by Samir Bhattarai, which uses a ResNet-9 architecture trained in PyTorch. This notebook demonstrates 
+  how a convolutional neural network can achieve high accuracy on the PlantVillage dataset. We will use 
+  this code as our baseline model and compare its performance to our own modified pipeline that includes
+  new preprocessing methods.
+</p>
+<p>
+  All preprocessing and experiment scripts will be written by the team using Python and OpenCV for image 
+  processing. The model training and evaluation will be done using PyTorch, and experiments will run on Google 
+  Colab, local system, or VT Advanced Research Center (ARC). We will record training accuracy, validation accuracy, loss curves, 
+  and visualizations for analysis.
+</p>
 <ol>
-  <li><strong>Image Preprocessing:</strong>
+  <li><strong>Experimental Setup</strong>
     <ul>
       <li>
-        Color space transformations to test how color representation affects feature visibility.
+        Datasets: PlantVillage and New Plant Diseases Dataset
       </li>
       <li>
-        Noise reduction using Gaussian blur or median filtering.
+        Model Architecture: ResNet-9
       </li>
       <li>
-        Histogram equalization to enhance contrast and make disease spots more visible
+        Implementation Tools: Python, PyTorch, OpenCV, NumPy, Matplotlib
       </li>
       <li>
-        Edge enhancement using filters like Sobel or Laplacian operators.
+        Hardware: Google Colab GPU, local system, or VT Advanced Research Center (ARC)
+      </li>
+      <li>
+        Evaluation Metrics: Accuracy, Precision, Recall, F1-score, and Confusion Matrix
       </li>
     </ul>
   </li>
 
-  <li><strong>Feature Extraction:</strong>
+  <li><strong>List of Experiments</strong>
     <ul>
       <li>
-        The processed images will be fed into a pre-trained deep learning model (such as a CNN) to measure how preprocessing affects accuracy and generalization. 
-        The same model architecture and training parameters will be used for all experiments to ensure fair comparison.
+        Baseline Model: Reproduce the ResNet-9 results using the original Kaggle code and dataset.
+      </li>
+      <li>
+        Color Space Comparison: Test RGB, HSV, and LAB color-space transformations to analyze which color representation improves classification.
+      </li>
+      <li>
+        Noise Reduction Study: Apply Gaussian and median filters to evaluate how removing background noise affects accuracy.      </li>
+      <li>
+        Contrast and Edge Enhancement: Use histogram equalization and Sobel/Laplacian filters to highlight disease features.
+      </li>
+      <li>
+        Combined Preprocessing Pipeline: Combine the best-performing preprocessing steps and compare the results against the baseline model
       </li>
     </ul>
   </li>
 
-  <li><strong>Visualization and Interpretability:</strong>
+  <li><strong>Expected Outcomes</strong>
     <ul>
       <li>
-          Visualization will be used to show which parts of the image the model focuses on when predicting diseases. 
-          This helps check whether the model is paying attention to the actual diseased areas of the leaf instead of the background.
+        The team expects that adding preprocessing techniques will lead to improved accuracy and more 
+        consistent predictions compared to the baseline ResNet-9 model trained on raw images. 
+        Visualization results are expected to show that enhanced preprocessing helps the model 
+        focus on diseased areas more accurately. However, it is uncertain which individual techniques 
+        will have the greatest effect, or whether combining multiple methods will cause
+        over-enhancement that reduces performance.
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Definition of Success</strong>
+    <ul>
+      <li>
+        The modified preprocessing pipeline achieves higher accuracy than the baseline ResNet-9 model.
+      </li>
+      <li>
+        Visualizations show better focus on diseased leaf areas.
+      </li>
+      <li>
+        The experiments clearly demonstrate that computer vision-based preprocessing can improve model 
+        reliability and overall performance in plant disease detection.
       </li>
     </ul>
   </li>
